@@ -1,0 +1,14 @@
+/* Кулинарные цвета */
+:root {
+  /* Основные цвета */
+  --tomato: #FF6B6B;      /* Красный помидор */
+  --carrot: #FFA726;      /* Оранжевая морковь */
+  --lettuce: #4CAF50;     /* Зеленый салат */
+  --eggplant: #7E57C2;    /* Фиолетовый баклажан */
+  --cheese: #FFD54F;      /* Желтый сыр */
+  --cream: #FFF9C4;       /* Сливочный фон */
+  
+  /* Градиенты */
+  --gradient-sunset: linear-gradient(135deg, var(--tomato), var(--carrot));
+  --gradient-spring: linear-gradient(135deg, var(--lettuce), var(--cheese));
+}

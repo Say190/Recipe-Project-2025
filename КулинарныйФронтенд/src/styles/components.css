@@ -1,0 +1,18 @@
+/* Кнопки */
+.btn-primary {
+  background: var(--gradient-sunset);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 50px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Карточки рецептов */
+.recipe-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
