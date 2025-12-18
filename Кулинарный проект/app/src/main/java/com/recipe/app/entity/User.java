@@ -1,13 +1,17 @@
-
 package com.recipe.app.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import java.time.LocalDateTime;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
     @Id
@@ -15,22 +19,24 @@ public class User {
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String email;
+    private String username;
 
     @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
-    private String username;
+    private String role; // Хранит значения: "ADMIN" или "USER"
 
-    @Column(name = "role")
-    private String role = "USER";
+    // Связь с избранными рецептами (для реализации функции "добавлять в избранное")
+    @ManyToMany
+    @JoinTable(name = "user_favorites", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "recipe_id"))
+    private List<Recipe> favorites;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    // Связь с рецептами, которые создал этот пользователь
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    private List<Recipe> myRecipes;
 
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-    }
+    @Column(unique = true, nullable = false)
+    private String email; // Добавь эту строку
+
 }
